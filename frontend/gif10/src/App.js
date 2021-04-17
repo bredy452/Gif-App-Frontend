@@ -54,9 +54,30 @@ class App extends Component {
        <h1>Helpful Links</h1>
        <NewForm baseUrl={ baseUrl} addGifs={this.addGif}/>
        <ShowGifs newGif={this.state.gifs} />
+<<<<<<< HEAD
        <Delete newGif={this.state.gifs} baseUrl={baseUrl} getGifs = {this.getGifs} />
        <Edit newGif={this.state.gifs} baseUrl={baseUrl} getGifs={this.getGifs}/> 
                  
+=======
+       {/*<table>
+         <tbody>
+           {this.state.gifs.map(gif => {
+             return (
+               <tr key={gif._id}>
+                 <td>{gif.name}</td>
+                <td><a href={gif.url}></a></td>
+                 <td>
+                   < Delete id={gif._id} baseUrl = {baseUrl} getGifs = {this.getGifs} />
+                 </td>
+                 <td>
+                  < Edit id={gif._id} baseUrl = {baseUrl} name={gif.name} url={gif.url} getGifs={this.getGifs}/> 
+                 </td>
+               </tr>
+             )
+           })}
+         </tbody>
+       </table>*/}
+>>>>>>> 14b3fc60bb488fb09a58a4cb676f47eddaf5c099
      </div>
     );
   }

@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
+<<<<<<< HEAD
 
+=======
+>>>>>>> 14b3fc60bb488fb09a58a4cb676f47eddaf5c099
 // I was thinking of using this button on other forms, but didn't
 
 
