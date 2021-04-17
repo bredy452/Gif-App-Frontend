@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-<<<<<<< HEAD
+import App from '../App'
 
-=======
->>>>>>> 14b3fc60bb488fb09a58a4cb676f47eddaf5c099
+
 // I was thinking of using this button on other forms, but didn't
 
 
@@ -16,8 +15,8 @@ export default class Delete extends Component {
 
      handleSubmit = (e) => {
         e.preventDefault()
-        //fetch and update props{addGifs in app}
-        console.log(this.state)
+        console.log(this.props.baseUrl)
+        //fetch and update props{addGifs in app
         fetch(`${this.props.baseUrl}/gifs/${this.state._id}` , {
             method: 'DELETE', 
             body: JSON.stringify({

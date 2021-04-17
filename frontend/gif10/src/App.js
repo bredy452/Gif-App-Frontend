@@ -1,8 +1,8 @@
   
 import React, { Component } from "react"; 
 import NewForm from './Components/NewForm'
-import Delete from './Components/Delete'
-import Edit from './Components/Edit'
+// import Delete from './Components/Delete'
+// import Edit from './Components/Edit'
 import ShowGifs from './Components/ShowGifs'
 
 let baseUrl = ''
@@ -41,6 +41,8 @@ class App extends Component {
     }) 
   }
 
+  
+
 
   componentDidMount() {
     this.getGifs()
@@ -49,16 +51,16 @@ class App extends Component {
 
   render() {
     console.log(this.state)
+    console.log(baseUrl)
     return (
      <div className='container'>
        <h1>Helpful Links</h1>
-       <NewForm baseUrl={ baseUrl} addGifs={this.addGif}/>
+       <NewForm baseUrl={baseUrl} addGifs={this.addGif}/>
        <ShowGifs newGif={this.state.gifs} />
-<<<<<<< HEAD
-       <Delete newGif={this.state.gifs} baseUrl={baseUrl} getGifs = {this.getGifs} />
-       <Edit newGif={this.state.gifs} baseUrl={baseUrl} getGifs={this.getGifs}/> 
+       
+       {/*<Delete newGif={this.state.gifs} baseUrl={baseUrl} getGifs={this.getGifs} />
+       <Edit newGif={this.state.gifs} baseUrl={baseUrl} getGifs={this.getGifs}/> */}
                  
-=======
        {/*<table>
          <tbody>
            {this.state.gifs.map(gif => {
@@ -77,7 +79,6 @@ class App extends Component {
            })}
          </tbody>
        </table>*/}
->>>>>>> 14b3fc60bb488fb09a58a4cb676f47eddaf5c099
      </div>
     );
   }

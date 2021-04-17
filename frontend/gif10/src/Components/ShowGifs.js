@@ -1,4 +1,7 @@
 import React from 'react'
+import Delete from './Delete'
+import Edit from './Edit'
+import { Divider, Image } from 'semantic-ui-react'
 
 export default function ShowGifs(props) {
 	return(
@@ -9,12 +12,13 @@ export default function ShowGifs(props) {
              return (
                <tr key={gif._id}>
                  <td>{gif.name}</td>
-<<<<<<< HEAD
-                 
+                 <td><Image src={gif.url} size='medium'></Image></td>
+                 <Delete newGif={props.gifs} baseUrl={props.baseUrl} getGifs={props.getGifs} />
+                 <Edit newGif={props.gifs} baseUrl={props.baseUrl} getGifs={props.getGifs}/> 
 
-=======
+
                 {/*<td><a href={gif.url}></a></td>*/}
->>>>>>> 14b3fc60bb488fb09a58a4cb676f47eddaf5c099
+
                </tr>
              )
            })}
