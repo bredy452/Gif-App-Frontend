@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import NewForm from './Components/NewForm'
 import Delete from './Components/Delete'
 import Edit from './Components/Edit'
+import ShowGifs from './Components/ShowGifs'
 
 let baseUrl = ''
 
@@ -52,12 +53,14 @@ class App extends Component {
      <div className='container'>
        <h1>Helpful Links</h1>
        <NewForm baseUrl={ baseUrl} addGifs={this.addGif}/>
-       <table>
+       <ShowGifs newGif={this.state.gifs} />
+       {/*<table>
          <tbody>
            {this.state.gifs.map(gif => {
              return (
                <tr key={gif._id}>
-                 <td> <a href={gif.url}>{gif.name}</a></td>
+                 <td>{gif.name}</td>
+                <td><a href={gif.url}></a></td>
                  <td>
                    < Delete id={gif._id} baseUrl = {baseUrl} getGifs = {this.getGifs} />
                  </td>
@@ -68,7 +71,7 @@ class App extends Component {
              )
            })}
          </tbody>
-       </table>
+       </table>*/}
      </div>
     );
   }
