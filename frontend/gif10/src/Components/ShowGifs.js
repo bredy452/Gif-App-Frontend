@@ -5,6 +5,7 @@ import { Divider, Image } from 'semantic-ui-react'
 
 export default function ShowGifs(props) {
   console.log(props.baseUrl)
+
 	return(
 
 		<table>
@@ -15,7 +16,7 @@ export default function ShowGifs(props) {
                  <td>{gif.name}</td>
                  <td><Image src={gif.url} size='medium'></Image></td>
                  <Delete gif={gif._id} baseUrl={props.baseUrl} getGifs={props.getGifs} />
-                 <Edit newGif={props.gifs} baseUrl={props.baseUrl} getGifs={props.getGifs}/> 
+                 <Edit gif={gif._id} baseUrl={props.baseUrl} getGifs={props.getGifs}/> 
 
                </tr>
              )

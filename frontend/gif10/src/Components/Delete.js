@@ -30,7 +30,7 @@ export default class Delete extends Component {
         }).then ( res => {
             return res.json()
         }).then ( data => {
-            this.props.getBookmarks()
+            this.props.getGifs()
         }).catch(error => console.error)
     }
 
