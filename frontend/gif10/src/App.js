@@ -1,7 +1,6 @@
   
 import React, { Component } from "react"; 
 import NewForm from './Components/NewForm'
-// import Delete from './Components/Delete'
 // import Edit from './Components/Edit'
 import ShowGifs from './Components/ShowGifs'
 
@@ -54,10 +53,10 @@ class App extends Component {
     console.log(baseUrl)
     return (
      <div className='container'>
-       <h1>Helpful Links</h1>
+       <h1>The Amazing Giph App!</h1>
        <NewForm baseUrl={baseUrl} addGifs={this.addGif}/>
-       <ShowGifs newGif={this.state.gifs} />
-       
+       <ShowGifs newGif={this.state.gifs} baseUrl={baseUrl}/>
+
        {/*<Delete newGif={this.state.gifs} baseUrl={baseUrl} getGifs={this.getGifs} />
        <Edit newGif={this.state.gifs} baseUrl={baseUrl} getGifs={this.getGifs}/> */}
                  

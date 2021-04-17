@@ -9,13 +9,14 @@ export default class Delete extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            _id: this.props.id
+            _id: this.props.gif
         }
     }
 
      handleSubmit = (e) => {
         e.preventDefault()
         console.log(this.props.baseUrl)
+        console.log(this.state)
         //fetch and update props{addGifs in app
         fetch(`${this.props.baseUrl}/gifs/${this.state._id}` , {
             method: 'DELETE', 

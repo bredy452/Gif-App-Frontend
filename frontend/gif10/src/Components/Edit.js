@@ -3,7 +3,7 @@ import EditForm from './EditForm'
 
 import { Button, Modal } from 'semantic-ui-react'
 
-function Edits(props) {
+export default function Edits(props) {
 const [open, setOpen] = React.useState(false)
 
 return (
@@ -25,4 +25,3 @@ return (
 )
 }
 
-export default Edits
