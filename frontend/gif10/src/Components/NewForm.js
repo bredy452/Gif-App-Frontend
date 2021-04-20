@@ -13,6 +13,7 @@ export default class NewForm extends Component {
 
 
     handleChange =(e)=> {
+        console.log(this.state)
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -37,11 +38,12 @@ export default class NewForm extends Component {
             return res.json()
         }).then ( data => {
             this.props.addGifs(data)
+            console.log(data)
             this.setState({
                 name: '',
                 url: '',
                 description: ''
-                })
+            })
         }).catch(error => console.error)
     }
 

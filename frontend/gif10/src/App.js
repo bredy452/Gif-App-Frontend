@@ -133,7 +133,7 @@ export default class App extends Component {
       <div className='container'>
            <h1>The Amazing Giph App!</h1>
           <NewForm baseUrl={baseUrl} addGifs={this.addGif}/>
-          <ShowGifs newGif={this.state.gifs} getGifs={this.getGif} baseUrl={baseUrl}/>
+          <ShowGifs newGif={this.state.gifs} getGifs={this.getGifs} baseUrl={baseUrl}/>
       </div>
       </>
     )
