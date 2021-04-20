@@ -23,7 +23,7 @@ export default class NewForm extends Component {
         //fetch and update props{addBookmark in app}
         console.log(this.props.baseUrl)
         fetch(`${this.props.baseUrl}/gifs`, {
-            method: 'POST', 
+            method: 'POST',
             body: JSON.stringify({
                 //below is where the other attributes get put...
                 name: this.state.name,
@@ -45,7 +45,7 @@ export default class NewForm extends Component {
         }).catch(error => console.error)
     }
 
-  
+
 
     render() {
         return (

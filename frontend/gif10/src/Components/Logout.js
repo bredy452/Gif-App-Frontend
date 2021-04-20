@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
-​
+
 export default class Logout extends Component {
-  
+
         constructor(props) {
             super(props)
             this.state = {
                 user: this.props.user
         }
     }
-​
+
 deleteSubmit = (e) => {
     e.preventDefault()
     fetch(`${this.props.baseUrl}/sessions/signout`, {
-        method: 'DELETE', 
+        method: 'DELETE',
         body: JSON.stringify({
             //below is where the other attributes get put...
             username: this.state.loginUsername,
@@ -30,11 +30,11 @@ deleteSubmit = (e) => {
         this.props.deleteSession(data)
         this.setState({
             user:[]
-            })              
+            })
     }).catch(error => console.error)
 }
-​
-​
+
+
     render() {
         return (
             <>

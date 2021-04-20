@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-​
+
 export default class Register extends Component {
     constructor(props) {
         super(props)
@@ -8,20 +8,20 @@ export default class Register extends Component {
             loginPassword:'',
         }
         }
-​
+
    handleChange =(e)=> {
         this.setState({
             [e.target.name]: e.target.value
         })
     }
-​
-handleSubmit = (e) => {
+
+  handleSubmit = (e) => {
     e.preventDefault()
- 
+
     console.log(this.state)
     console.log(this.props.baseUrl)
     fetch(`${this.props.baseUrl}/sessions`, {
-        method: 'POST', 
+        method: 'POST',
         body: JSON.stringify({
             //below is where the other attributes get put...
             username: this.state.loginUsername,
@@ -39,12 +39,9 @@ handleSubmit = (e) => {
         this.setState({
             loginUsername: '',
             loginPassword: '',
-            })              
+            })
     }).catch(error => console.error)
-}
-​
-​
-​
+  }
     render() {
         return (
             <>
