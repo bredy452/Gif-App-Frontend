@@ -137,24 +137,24 @@ export default class App extends Component {
           {/*<Delete newGif={this.state.gifs} baseUrl={baseUrl} getGifs={this.getGifs} />
        <Edit newGif={this.state.gifs} baseUrl={baseUrl} getGifs={this.getGifs}/> */}
                  
-           {<table>
+           {/*{<table>
          <tbody>
            {this.state.gifs.map(gif => {
              return (
                <tr key={gif._id}>
                  <td>{gif.name}</td>
                 <td><a href={gif.url}></a></td>
-                 {/*<td>
+                 {<td>
                    < Delete id={gif._id} baseUrl = {baseUrl} getGifs = {this.getGifs} />
                  </td>
                  <td>
                   < Edit id={gif._id} baseUrl = {baseUrl} name={gif.name} url={gif.url} getGifs={this.getGifs}/> 
-                 </td>*/}
+                 </td>}
                </tr>
              )
            })}
          </tbody>
-           </table>}
+           </table>}*/}
       </div>
       </>
     )
