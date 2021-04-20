@@ -1,21 +1,12 @@
 import React, { Component } from "react"; 
+import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory, useLocation} from "react-router-dom"
 import NewForm from './Components/NewForm'
 import Logout from './Components/Logout'
 import Register from './Components/Register'
 import Login from './Components/Login'
-// import Edit from './Components/Edit'
 import ShowGifs from './Components/ShowGifs'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect,
-  useHistory,
-  useLocation
-} from "react-router-dom"
-​
-let baseUrl = ''
+
+let baseUrl = " "
 ​
 if (process.env.NODE_ENV === 'development') {
   baseUrl = 'http://localhost:3003'
@@ -143,46 +134,8 @@ deleteSession = (deletedSession) => {
           {/*<Delete newGif={this.state.gifs} baseUrl={baseUrl} getGifs={this.getGifs} />
        <Edit newGif={this.state.gifs} baseUrl={baseUrl} getGifs={this.getGifs}/> */}
                  
-           {<table>
-         <tbody>
-           {this.state.gifs.map(gif => {
-             return (
-               <tr key={gif._id}>
-                 <td>{gif.name}</td>
-                <td><a href={gif.url}></a></td>
-                 {/*<td>
-                   < Delete id={gif._id} baseUrl = {baseUrl} getGifs = {this.getGifs} />
-                 </td>
-                 <td>
-                  < Edit id={gif._id} baseUrl = {baseUrl} name={gif.name} url={gif.url} getGifs={this.getGifs}/> 
-                 </td>*/}
-               </tr>
-             )
-           })}
-         </tbody>
-           </table>}
       </div>
       </>
     )
   }
 }
-​
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-     
