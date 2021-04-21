@@ -14,51 +14,43 @@ import {
   useHistory,
   useLocation
 } from "react-router-dom"
-
 let baseUrl = ''
-
 if (process.env.NODE_ENV === 'development') {
   baseUrl = 'http://localhost:3003'
 } else {
   baseUrl = 'heroku url here'
 }
-
 export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      user: [],
+      user: '',
       session: false,
       gifs: [],
-      sessionUser: ''
+      sessionUser: {}
     }
   }
-
   checkLogin = () => {
     console.log(this.state.session)
     let sessionUser = localStorage.getItem('user')
-    console.log(sessionUser)
     this.setState({
       sessionUser: sessionUser
     })
-      }
-
-  addUser = (newUser) => {
-    const copyUser = [...this.state.user]
-    copyUser.push(newUser)
-    this.setState({
-      user: copyUser,
-    })
   }
-
+  // addUser = (newUser) => {
+  //   const copyUser = [...this.state.user]
+  //   copyUser.push(newUser)
+  //   this.setState({
+  //     user: copyUser,
+  //   })
+  //   this.checkLogin()
+  // }
   getUser = () => {
-    console.log(this.state.user)
     this.checkLogin()
     this.setState({
       session: !this.state.session
     })
   }
-
   getGifs = () => {
     fetch(`${baseUrl}/gifs`)
     .then(res => {
@@ -69,9 +61,7 @@ export default class App extends Component {
         })
       })
   }
-
   addGif = (newGif) => {
-
     const copyGifs = [...this.state.gifs]
     copyGifs.push(newGif)
     this.setState({
@@ -79,28 +69,30 @@ export default class App extends Component {
       name: ''
     })
   }
-
   addSession = (newSession) => {
-    console.log("addsess")
-    const copySession = [...this.state.user]
-    copySession.push(newSession)
+    localStorage.setItem('user', JSON.stringify(newSession))
+    let sessionUser = localStorage.getItem('user')
+    // const copySession = [...this.state.user]
+    // copySession.push(newSession)
     this.setState({
-      user: copySession,
-      session: true
+      user: sessionUser,
+      session: true,
+      sessionUser: sessionUser
     })
+    // console.log(this.state.user)
   }
-
   deleteSession = (deletedSession) => {
-    const findIndex = this.state.user.findIndex(user => deletedSession._id === user._id)
-          const copySession = [...this.state.user]
-          copySession.splice(findIndex, 1)
+    console.log(deletedSession)
+    // const findIndex = this.state.user.findIndex(user => deletedSession._id === user.id)
+          // const copySession = [...this.state.user]
+          // copySession.splice(findIndex, 1)
+          localStorage.clear()
           this.setState({
-            user: copySession,
+            user: '',
             session: false,
             sessionUser: ''
           })
   }
-
 
   componentDidMount() {
     this.getGifs()
@@ -108,7 +100,7 @@ export default class App extends Component {
   }
 
   render() {
-    console.log(this.state)
+    console.log(this.state.sessionUser, 'THIS IS THE SESSION')
     console.log(baseUrl)
 
     let user  = this.state.sessionUser
