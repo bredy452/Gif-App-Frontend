@@ -14,12 +14,15 @@ import {
   useHistory,
   useLocation
 } from "react-router-dom"
+
 let baseUrl = ''
+
 if (process.env.NODE_ENV === 'development') {
   baseUrl = 'http://localhost:3003'
 } else {
   baseUrl = 'heroku url here'
 }
+
 export default class App extends Component {
   constructor(props) {
     super(props)
@@ -30,6 +33,7 @@ export default class App extends Component {
       sessionUser: {}
     }
   }
+
   checkLogin = () => {
     console.log(this.state.session)
     let sessionUser = localStorage.getItem('user')
@@ -37,6 +41,7 @@ export default class App extends Component {
       sessionUser: sessionUser
     })
   }
+
   // addUser = (newUser) => {
   //   const copyUser = [...this.state.user]
   //   copyUser.push(newUser)
@@ -45,12 +50,14 @@ export default class App extends Component {
   //   })
   //   this.checkLogin()
   // }
+
   getUser = () => {
     this.checkLogin()
     this.setState({
       session: !this.state.session
     })
   }
+
   getGifs = () => {
     fetch(`${baseUrl}/gifs`)
     .then(res => {
@@ -61,7 +68,9 @@ export default class App extends Component {
         })
       })
   }
+
   addGif = (newGif) => {
+
     const copyGifs = [...this.state.gifs]
     copyGifs.push(newGif)
     this.setState({
@@ -69,9 +78,11 @@ export default class App extends Component {
       name: ''
     })
   }
+
   addSession = (newSession) => {
     localStorage.setItem('user', JSON.stringify(newSession))
     let sessionUser = localStorage.getItem('user')
+    
     // const copySession = [...this.state.user]
     // copySession.push(newSession)
     this.setState({
@@ -79,11 +90,11 @@ export default class App extends Component {
       session: true,
       sessionUser: sessionUser
     })
-    // console.log(this.state.user)
+    console.log(this.state.user)
   }
+
   deleteSession = (deletedSession) => {
-    console.log(deletedSession)
-    // const findIndex = this.state.user.findIndex(user => deletedSession._id === user.id)
+    // const findIndex = this.state.user.findIndex(user => deletedSession._id === user._id)
           // const copySession = [...this.state.user]
           // copySession.splice(findIndex, 1)
           localStorage.clear()
@@ -94,16 +105,14 @@ export default class App extends Component {
           })
   }
 
+
   componentDidMount() {
     this.getGifs()
     this.checkLogin()
   }
 
   render() {
-    console.log(this.state.sessionUser, 'THIS IS THE SESSION')
-    console.log(baseUrl)
-
-    let user  = this.state.sessionUser
+       let user  = this.state.sessionUser
 
     return (
 
@@ -111,22 +120,29 @@ export default class App extends Component {
        <div>
          {(() => {
           if (user) {
-            return <Logout getUser={this.getUser} baseUrl={baseUrl} deleteSession={this.deleteSession} user={this.user} />
+            return ([   <div className='container'>
+            <h1>The Amazing Giph App!</h1>
+           <NewForm baseUrl={baseUrl} addGifs={this.addGif}/>
+           <ShowGifs newGif={this.state.gifs} getGifs={this.getGifs} baseUrl={baseUrl}/>
+       </div>,
+            <Logout getUser={this.getUser} baseUrl={baseUrl} deleteSession={this.deleteSession}  />])
+              
           } else {
-               return <Login checkSession={this.checkLogin} baseUrl={baseUrl} addSessions={this.addSession} />
-           }
+         return ([<Login checkSession={this.checkLogin} baseUrl={baseUrl} addSessions={this.addSession} />,
+               <Register baseUrl={baseUrl} addUser={this.addUser}/>])
+              }
          })
          ()}
 
-       <Register baseUrl={baseUrl} addUser={this.addUser}/>
+       {/* <Register baseUrl={baseUrl} addUser={this.addUser}/> */}
  ​
       </div>
       
-      <div className='container'>
+      {/* <div className='container'>
            <h1>The Amazing Giph App!</h1>
           <NewForm baseUrl={baseUrl} addGifs={this.addGif}/>
           <ShowGifs newGif={this.state.gifs} getGifs={this.getGifs} baseUrl={baseUrl}/>
-      </div>
+      </div> */}
       </>
     )
   }
