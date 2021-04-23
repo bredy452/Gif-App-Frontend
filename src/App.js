@@ -18,7 +18,7 @@ import {
 
 let baseUrl = ''
 
-if (REACT_APP_NODE_ENV === 'development') {
+if (process.env.REACT_APP_NODE_ENV === 'development') {
   baseUrl = 'http://localhost:3003'
 } else {
   baseUrl = 'https://gif10-backend.herokuapp.com'
