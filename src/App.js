@@ -23,6 +23,7 @@ if (process.env.NODE_ENV === 'development') {
 } else {
   baseUrl = 'https://gif10-backend.herokuapp.com'
 }
+console.log(process.env.NODE_ENV)
 
 export default class App extends Component {
   constructor(props) {
