@@ -21,7 +21,7 @@ let baseUrl = ''
 if (process.env.NODE_ENV === 'development') {
   baseUrl = 'http://localhost:3003'
 } else {
-  baseUrl = 'https://gif10-backend.herokuapp.com'
+  baseUrl = REACT_APP_BASEURL
 }
 console.log(process.env.NODE_ENV)
 
