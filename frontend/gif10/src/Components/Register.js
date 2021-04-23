@@ -19,13 +19,12 @@ export default class Register extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        //fetch and update props{addBookmark in app}
         console.log(this.state)
         console.log(this.props.baseUrl)
         fetch(`${this.props.baseUrl}/users`, {
             method: 'POST', 
             body: JSON.stringify({
-                //below is where the other attributes get put...
+
                 username: this.state.registerUsername,
                 password: this.state.registerPassword,
                 firstName: this.state.registerFN,
@@ -38,6 +37,7 @@ export default class Register extends Component {
             return res.json()
         }).then ( data => {
             this.props.addUsers(data)
+
             this.setState({
                 registerUsername: '',
                 registerPassword: '',
@@ -45,6 +45,7 @@ export default class Register extends Component {
                 registerLN: ''
                 })
         }).catch(error => console.error)
+         this.props.register()
     }
 
     render() {

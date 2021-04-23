@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
-// import {useState} from 'react'
+
 
 export default class Register extends Component {
     constructor(props) {
@@ -8,7 +8,6 @@ export default class Register extends Component {
         this.state = {
             loginUsername:'',
             loginPassword:'',
-            // visible: false
         }
     }
 
@@ -45,27 +44,16 @@ export default class Register extends Component {
     }).catch(error => console.error)
   }
     render() {
+
         return (
-//             <>
-//             <div>
-//                 <h1>Login</h1>
-//                 <form onSubmit={ (e) => this.handleSubmit(e)}>
-//                 <label htmlFor="loginUsername">Username:</label>
-//                 <input type='text' id="username" name="loginUsername" onChange={ (e) => this.handleChange(e)} value={this.state.loginUsername} placeholder='username' />
-//                 <label htmlFor="loginPassword">Password:</label>
-//                 <input type='password' name="loginPassword" onChange={ (e) => this.handleChange(e)} value={this.state.loginPassword} placeholder='password'/>
-//                 <input type='submit' value='submit' />
-//                 </form>
-//                 </div>
-//                 </>
-//         )
-//     }
-// }
 
 <>
+
+
 <div>
 
-{/*{this.state.visible ? <Register baseUrl={baseUrl} addUser={this.addUser}/> :*/} 
+ 
+
 <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
     <Grid.Column style={{ maxWidth: 450 }}>
       <Header as='h2' color='teal' textAlign='center'>
@@ -83,18 +71,21 @@ export default class Register extends Component {
             name='loginPassword'
             onChange={ (e) => this.handleChange(e)} value={this.state.loginPassword}
           />
-
           <Button color='red' fluid size='large'>
             Login
           </Button>
         </Segment>
       </Form>
-      <Message>
-        New to us? <a href='#'>Sign Up</a>
-      </Message>
+      <Button onClick={(e) => { this.props.register(e)}} >
+         Sign Up
+      </Button>
     </Grid.Column>
   </Grid>
+
+  
   </div>
+ 
+ {/* {this.props.visible===false? <Register baseUrl={this.props.baseUrl} addUser={this.props.addUser} /> :null}*/}
   </>
 )
 }

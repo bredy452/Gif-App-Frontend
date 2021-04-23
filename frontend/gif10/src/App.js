@@ -31,7 +31,8 @@ export default class App extends Component {
       user: '',
       session: false,
       gifs: [],
-      sessionUser: {}
+      sessionUser: {},
+      visible: true
     }
   }
 
@@ -106,6 +107,12 @@ export default class App extends Component {
           })
   }
 
+  register = () => {
+    this.setState({
+      visible: !this.state.visible
+    })
+  }
+
 
   componentDidMount() {
     this.getGifs()
@@ -129,22 +136,23 @@ export default class App extends Component {
        </div>,
             <Logout getUser={this.getUser} baseUrl={baseUrl} deleteSession={this.deleteSession} />])
               
-          } else {
-         return ([<Login checkSession={this.checkLogin} baseUrl={baseUrl} addSessions={this.addSession} />,
-               <Register baseUrl={baseUrl} addUser={this.addUser}/>])
+          }  else {
+            if (this.state.visible===true) {
+
+         return ([<Login checkSession={this.checkLogin} baseUrl={baseUrl} addSessions={this.addSession} register={this.register} visible={this.state.visible} />,
+              
+               ])
               }
+             else {
+               return(<Register baseUrl={baseUrl} addUser={this.addUser} register={this.register}/>)
+            }
+          }
          })
          ()}
-
-       {/* <Register baseUrl={baseUrl} addUser={this.addUser}/> */}
  ​
       </div>
       
-      {/* <div className='container'>
-           <h1>The Amazing Giph App!</h1>
-          <NewForm baseUrl={baseUrl} addGifs={this.addGif}/>
-          <ShowGifs newGif={this.state.gifs} getGifs={this.getGifs} baseUrl={baseUrl}/>
-      </div> */}
+    
       </>
     )
   }
