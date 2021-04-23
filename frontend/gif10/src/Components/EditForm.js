@@ -13,7 +13,6 @@ export default class EditForm extends Component {
 
 
     handleChange = (e) => {
-        console.log(this.state)
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -21,10 +20,8 @@ export default class EditForm extends Component {
 
      handleSubmit = (e) => {
         e.preventDefault()
-        console.log(this.props.baseUrl)
         //fetch and update props{addBookmark in app}
-        console.log(this.state.name, this.props.gif._id)
-        console.log(this.state.description)
+        
         fetch(`${this.props.baseUrl}/gifs/${this.props.gif._id}`,  {
             method: 'PUT', 
             body: JSON.stringify({

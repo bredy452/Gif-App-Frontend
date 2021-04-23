@@ -3,6 +3,7 @@ import NewForm from './Components/NewForm'
 import Logout from './Components/Logout'
 import Register from './Components/Register'
 import Login from './Components/Login'
+import "./App.css"
 // import Edit from './Components/Edit'
 import ShowGifs from './Components/ShowGifs'
 import {
@@ -113,19 +114,20 @@ export default class App extends Component {
 
   render() {
        let user  = this.state.sessionUser
-
+       // console.log(this.state.gifs)
+       //COME BACK TO THIS
     return (
 
       <>
        <div>
          {(() => {
           if (user) {
-            return ([   <div className='container'>
+            return ([ <div className='container'>
             <h1>The Amazing Giph App!</h1>
            <NewForm baseUrl={baseUrl} addGifs={this.addGif}/>
            <ShowGifs newGif={this.state.gifs} getGifs={this.getGifs} baseUrl={baseUrl}/>
        </div>,
-            <Logout getUser={this.getUser} baseUrl={baseUrl} deleteSession={this.deleteSession}  />])
+            <Logout getUser={this.getUser} baseUrl={baseUrl} deleteSession={this.deleteSession} />])
               
           } else {
          return ([<Login checkSession={this.checkLogin} baseUrl={baseUrl} addSessions={this.addSession} />,
