@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+// import {useState} from 'react'
 
 export default class Register extends Component {
     constructor(props) {
@@ -7,8 +8,9 @@ export default class Register extends Component {
         this.state = {
             loginUsername:'',
             loginPassword:'',
+            // visible: false
         }
-        }
+    }
 
    handleChange =(e)=> {
         this.setState({
@@ -62,6 +64,8 @@ export default class Register extends Component {
 
 <>
 <div>
+
+{/*{this.state.visible ? <Register baseUrl={baseUrl} addUser={this.addUser}/> :*/} 
 <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
     <Grid.Column style={{ maxWidth: 450 }}>
       <Header as='h2' color='teal' textAlign='center'>
