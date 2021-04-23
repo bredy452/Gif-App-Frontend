@@ -133,7 +133,10 @@ export default class App extends Component {
             return ([ <div className='container'>
             <h1>The Amazing Giph App!</h1>
            <NewForm baseUrl={baseUrl} addGifs={this.addGif}/>
-           {this.state.gifs.length ? <ShowGifs newGif={this.state.gifs} getGifs={this.getGifs} baseUrl={baseUrl}/> : <p>Add Gifs</p>}
+{/*           {this.state.gifs.length ? */}
+            <ShowGifs newGif={this.state.gifs} getGifs={this.
+              getGifs} baseUrl={baseUrl}/> 
+            {/*  : <p>Add Gifs</p>}*/}
        </div>,
             <Logout getUser={this.getUser} baseUrl={baseUrl} deleteSession={this.deleteSession} />])
               
