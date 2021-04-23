@@ -22,7 +22,7 @@ export default class NewForm extends Component {
      handleSubmit = (e) => {
         e.preventDefault()
         //fetch and update props{addBookmark in app}
-        console.log(this.state)
+     
         fetch(`${this.props.baseUrl}/gifs`, {
             method: 'POST',
             body: JSON.stringify({
