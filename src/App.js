@@ -16,14 +16,14 @@ import {
   useLocation
 } from "react-router-dom"
 
-let baseUrl = 'https://gif10-backend.herokuapp.com'
+let baseUrl = ''
 
-// if (process.env.NODE_ENV === 'development') {
-//   baseUrl = 'http://localhost:3003'
-// } else {
-//   baseUrl = 'https://gif10-backend.herokuapp.com'
-// }
-console.log(process.env.NODE_ENV)
+if (REACT_APP_NODE_ENV === 'development') {
+  baseUrl = 'http://localhost:3003'
+} else {
+  baseUrl = 'https://gif10-backend.herokuapp.com'
+}
+
 
 export default class App extends Component {
   constructor(props) {
