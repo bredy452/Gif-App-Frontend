@@ -3,9 +3,10 @@ import EditForm from './EditForm'
 
 import { Button, Modal } from 'semantic-ui-react'
 
-function Edits(props) {
+export default function Edits(props) {
 const [open, setOpen] = React.useState(false)
 
+console.log(props.gif)
 return (
     
 <Modal onClose={()=> setOpen(false)}
@@ -13,7 +14,7 @@ return (
     open={open}
     trigger={<i style={{cursor:'pointer'}}className="edit icon"></i>}>
      <Modal.Content>
-         <EditForm id={props.id} baseUrl = {props.baseUrl} name={props.name} url={props.url} getGifs={props.getGifs}/>
+         <EditForm gif={props.gif} baseUrl={props.baseUrl} name={props.name} url={props.url} getGifs={props.getGifs}/>
      </Modal.Content>
     <Modal.Actions>
         <Button color='black' onClick={()=> setOpen(false)}>
@@ -24,5 +25,3 @@ return (
 
 )
 }
-
-export default Edits

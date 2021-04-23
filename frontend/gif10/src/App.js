@@ -1,9 +1,20 @@
-  
-import React, { Component } from "react"; 
+import React, { Component } from "react"
 import NewForm from './Components/NewForm'
-import Delete from './Components/Delete'
-import Edit from './Components/Edit'
+import Logout from './Components/Logout'
+import Register from './Components/Register'
+import Login from './Components/Login'
+import "./App.css"
+// import Edit from './Components/Edit'
 import ShowGifs from './Components/ShowGifs'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+  useHistory,
+  useLocation
+} from "react-router-dom"
 
 let baseUrl = ''
 
@@ -13,68 +24,136 @@ if (process.env.NODE_ENV === 'development') {
   baseUrl = 'heroku url here'
 }
 
-
-class App extends Component {
+export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      gifs:[]
+      user: '',
+      session: false,
+      gifs: [],
+      sessionUser: {},
+      visible: true
     }
   }
 
-  getGifs = () => {
-    fetch(`${baseUrl}/gifs`).then(res => { 
-      return res.json()}).then(data => {
-        this.setState({
-          gifs: data,
-      })
+  checkLogin = () => {
+    console.log(this.state.session)
+    let sessionUser = localStorage.getItem('user')
+    this.setState({
+      sessionUser: sessionUser
     })
   }
 
+  // addUser = (newUser) => {
+  //   const copyUser = [...this.state.user]
+  //   copyUser.push(newUser)
+  //   this.setState({
+  //     user: copyUser,
+  //   })
+  //   this.checkLogin()
+  // }
+
+  getUser = () => {
+    this.checkLogin()
+    this.setState({
+      session: !this.state.session
+    })
+  }
+
+  getGifs = () => {
+    fetch(`${baseUrl}/gifs`)
+    .then(res => {
+      return res.json()})
+    .then(data => {
+        this.setState({
+          gifs: data
+        })
+      })
+  }
+
   addGif = (newGif) => {
-  
+
     const copyGifs = [...this.state.gifs]
     copyGifs.push(newGif)
     this.setState({
       gifs: copyGifs,
       name: ''
-    }) 
+    })
+  }
+
+  addSession = (newSession) => {
+    localStorage.setItem('user', JSON.stringify(newSession))
+    let sessionUser = localStorage.getItem('user')
+    
+    // const copySession = [...this.state.user]
+    // copySession.push(newSession)
+    this.setState({
+      user: sessionUser,
+      session: true,
+      sessionUser: sessionUser
+    })
+    console.log(this.state.user)
+  }
+
+  deleteSession = (deletedSession) => {
+    // const findIndex = this.state.user.findIndex(user => deletedSession._id === user._id)
+          // const copySession = [...this.state.user]
+          // copySession.splice(findIndex, 1)
+          localStorage.clear()
+          this.setState({
+            user: '',
+            session: false,
+            sessionUser: ''
+          })
+  }
+
+  register = () => {
+    this.setState({
+      visible: !this.state.visible
+    })
   }
 
 
   componentDidMount() {
     this.getGifs()
+    this.checkLogin()
   }
-
 
   render() {
-    console.log(this.state)
+       let user  = this.state.sessionUser
+       // console.log(this.state.gifs)
+       //COME BACK TO THIS
     return (
-     <div className='container'>
-       <h1>Helpful Links</h1>
-       <NewForm baseUrl={ baseUrl} addGifs={this.addGif}/>
-       <ShowGifs newGif={this.state.gifs} />
-       {/*<table>
-         <tbody>
-           {this.state.gifs.map(gif => {
-             return (
-               <tr key={gif._id}>
-                 <td>{gif.name}</td>
-                <td><a href={gif.url}></a></td>
-                 <td>
-                   < Delete id={gif._id} baseUrl = {baseUrl} getGifs = {this.getGifs} />
-                 </td>
-                 <td>
-                  < Edit id={gif._id} baseUrl = {baseUrl} name={gif.name} url={gif.url} getGifs={this.getGifs}/> 
-                 </td>
-               </tr>
-             )
-           })}
-         </tbody>
-       </table>*/}
-     </div>
-    );
+
+      <>
+       <div>
+         {(() => {
+          if (user) {
+            return ([ <div className='container'>
+            <h1>The Amazing Giph App!</h1>
+           <NewForm baseUrl={baseUrl} addGifs={this.addGif}/>
+           <ShowGifs newGif={this.state.gifs} getGifs={this.getGifs} baseUrl={baseUrl}/>
+       </div>,
+            <Logout getUser={this.getUser} baseUrl={baseUrl} deleteSession={this.deleteSession} />])
+              
+          }  else {
+            if (this.state.visible===true) {
+
+         return ([<Login checkSession={this.checkLogin} baseUrl={baseUrl} addSessions={this.addSession} register={this.register} visible={this.state.visible} />,
+              
+               ])
+              }
+             else {
+               return(<Register baseUrl={baseUrl} addUser={this.addUser} register={this.register}/>)
+            }
+          }
+         })
+         ()}
+ ​
+      </div>
+      
+    
+      </>
+    )
   }
 }
-
-export default App;
