@@ -16,13 +16,13 @@ import {
   useLocation
 } from "react-router-dom"
 
-let baseUrl = ''
+let baseUrl = REACT_APP_BASEURL
 
-if (process.env.NODE_ENV === 'development') {
-  baseUrl = 'http://localhost:3003'
-} else {
-  baseUrl = REACT_APP_BASEURL
-}
+// if (process.env.NODE_ENV === 'development') {
+//   baseUrl = 'http://localhost:3003'
+// } else {
+//   baseUrl = REACT_APP_BASEURL
+// }
 console.log(process.env.NODE_ENV)
 
 export default class App extends Component {
