@@ -25,15 +25,14 @@ export default class NewForm extends Component {
         fetch(`${this.props.baseUrl}/gifs`, {
             method: 'POST',
             body: JSON.stringify({
-                
                 name: this.state.name,
                 url: this.state.url,
                 descrption: this.state.description
             }),
             headers: {
                 'Content-Type': 'application/json'
-            },
-                'credentials': 'include'
+            }
+    
         }).then ( res => {
             return res.json()
         }).then ( data => {
@@ -46,8 +45,6 @@ export default class NewForm extends Component {
             })
         }).catch(error => console.error)
     }
-
-
 
     render() {
         return (
