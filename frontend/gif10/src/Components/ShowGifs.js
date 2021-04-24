@@ -11,7 +11,7 @@ export default function ShowGifs(props) {
 	return(
 
 
-		<div className="flex">
+		<div className="flex u-full-width gif--list">
            {props.newGif.map(gif => {
              return (
               <Card.Group>
@@ -26,8 +26,10 @@ export default function ShowGifs(props) {
                   {gif.description}
                   </Card.Description>
 
-                  <Delete gif={gif._id} baseUrl={props.baseUrl} getGifs={props.getGifs} />
-                  <Edit gif={gif}  baseUrl={props.baseUrl} getGifs={props.getGifs}/>
+                  <div className='card--actions'>
+                    <Delete gif={gif._id} baseUrl={props.baseUrl} getGifs={props.getGifs} />
+                    <Edit gif={gif}  baseUrl={props.baseUrl} getGifs={props.getGifs}/>
+                  </div>
                 </Card.Content>
               </Card>
               </Card.Group>

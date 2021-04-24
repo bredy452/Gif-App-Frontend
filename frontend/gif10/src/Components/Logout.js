@@ -41,7 +41,7 @@ export default class Logout extends Component {
         console.log(this.props.user)
         return (
             <>
-            <button onClick={this.deleteSubmit}> Logout </button>
+            <button className="btn--logout" onClick={this.deleteSubmit}> Logout </button>
             </>
         )
     }
