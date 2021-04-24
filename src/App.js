@@ -19,7 +19,7 @@ import {
 
 let baseUrl = ''
 
-if (process.env.NODE_ENV === 'development') {
+if (REACT_APP_NODE_ENV === 'development') {
   baseUrl = 'http://localhost:3003'
 } else {
 
