@@ -21,7 +21,7 @@ export default class NewForm extends Component {
 
      handleSubmit = (e) => {
         e.preventDefault()
-        //fetch and update props{addBookmark in app}
+        
         console.log(this.props.baseUrl)
         fetch(`${this.props.baseUrl}/gifs`, {
             method: 'POST',
@@ -29,7 +29,7 @@ export default class NewForm extends Component {
                 //below is where the other attributes get put...
                 name: this.state.name,
                 url: this.state.url,
-                descrption: this.state.description
+                description: this.state.description
             }),
             headers: {
                 'Content-Type': 'application/json'

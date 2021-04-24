@@ -130,7 +130,7 @@ export default class App extends Component {
          {(() => {
           if (user) {
             return ([ <div className='container'>
-            <h1>The Amazing Giph App!</h1>
+            <h1>The Functional Giph App!</h1>
            <NewForm baseUrl={baseUrl} addGifs={this.addGif}/>
            <ShowGifs newGif={this.state.gifs} getGifs={this.getGifs} baseUrl={baseUrl}/>
        </div>,
