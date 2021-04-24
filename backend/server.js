@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
-const PORT = process.env.PORT
+const PORT = 3003
 const mongodbURI = process.env.MONGODB_URI
 // const passport = require('passport')
 // const passportLocal = require('passport-local').Strategy
