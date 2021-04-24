@@ -21,18 +21,19 @@ export default class NewForm extends Component {
 
      handleSubmit = (e) => {
         e.preventDefault()
-     
+        
+        console.log(this.props.baseUrl)
         fetch(`${this.props.baseUrl}/gifs`, {
             method: 'POST',
             body: JSON.stringify({
+                //below is where the other attributes get put...
                 name: this.state.name,
                 url: this.state.url,
-                descrption: this.state.description
+                description: this.state.description
             }),
             headers: {
                 'Content-Type': 'application/json'
             }
-    
         }).then ( res => {
             return res.json()
         }).then ( data => {
@@ -45,6 +46,8 @@ export default class NewForm extends Component {
             })
         }).catch(error => console.error)
     }
+
+
 
     render() {
         return (
