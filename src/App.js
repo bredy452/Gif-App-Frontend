@@ -66,9 +66,10 @@ export default class App extends Component {
     .then(res => {
       return res.json()})
     .then(data => {
-        this.setState({
-          gifs: data
-        })
+      console.log(data)
+        // this.setState({
+        //   gifs: data
+        // })
       }).catch((err) => {this.setState({
         gifs: []
       })
