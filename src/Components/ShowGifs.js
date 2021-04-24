@@ -14,8 +14,8 @@ export default function ShowGifs(props) {
 		<div className="flex">
            {props.newGif.map(gif => {
              return (
-              <Card.Group key={gif._id}>
-              <Card>
+              <Card.Group>
+              <Card key={gif._id} >
                 
                 <Image src={gif.url} size='medium' >
                   </Image>

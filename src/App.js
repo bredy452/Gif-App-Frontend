@@ -18,12 +18,11 @@ import {
 
 let baseUrl = ''
 
-if (process.env.REACT_APP_NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'development') {
   baseUrl = 'http://localhost:3003'
 } else {
-  baseUrl = 'https://gif10-backend.herokuapp.com'
+  baseUrl = 'https://p3sandboxreact.herokuapp.com'
 }
-
 
 export default class App extends Component {
   constructor(props) {
@@ -66,15 +65,10 @@ export default class App extends Component {
     .then(res => {
       return res.json()})
     .then(data => {
-      console.log(data)
-        // this.setState({
-        //   gifs: data
-        // })
-      }).catch((err) => {this.setState({
-        gifs: []
+        this.setState({
+          gifs: data
+        })
       })
-      console.log(err, 'LOOK AT ME!!')
-    })
   }
 
   addGif = (newGif) => {
@@ -136,12 +130,9 @@ export default class App extends Component {
          {(() => {
           if (user) {
             return ([ <div className='container'>
-            <h1>The Amazing Giph App!</h1>
+            <h1>The Functional Giph App!</h1>
            <NewForm baseUrl={baseUrl} addGifs={this.addGif}/>
-
-            <ShowGifs newGif={this.state.gifs} getGifs={this.
-              getGifs} baseUrl={baseUrl}/> 
-            
+           <ShowGifs newGif={this.state.gifs} getGifs={this.getGifs} baseUrl={baseUrl}/>
        </div>,
             <Logout getUser={this.getUser} baseUrl={baseUrl} deleteSession={this.deleteSession} />])
               
