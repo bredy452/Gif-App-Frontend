@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Button, Icon } from 'semantic-ui-react'
+
 export default class Logout extends Component {
         constructor(props) {
             super(props)
@@ -41,8 +43,14 @@ export default class Logout extends Component {
         console.log(this.props.user)
         return (
             <>
-            <button onClick={this.deleteSubmit}> Logout </button>
+            <Button basic color='black' animated onClick={this.deleteSubmit}> 
+            <Button.Content visible>
+                    <Icon flipped= 'horizontally' name='log out'/> 
+            </Button.Content>
+            <Button.Content hidden>Logout</Button.Content>
+            </Button>
             </>
         )
     }
 }
+

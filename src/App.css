@@ -1,5 +1,10 @@
+
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+
+
 .App {
   text-align: center;
+
 }
 
 .App-logo {
@@ -40,5 +45,12 @@
 .flex {
   display: flex;
   flex-wrap: wrap;
+}
+
+body {
+  font-family: 'Architects Daughter', cursive;
+  background-color: #f7e6e6;
+opacity: 1;
+background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #f7e6e6 4px ), repeating-linear-gradient( #48f35d55, #48f35d );
 }
 

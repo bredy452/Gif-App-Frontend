@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Input, Form } from 'semantic-ui-react'
 
 export default class NewForm extends Component {
     constructor(props) {
@@ -51,15 +52,21 @@ export default class NewForm extends Component {
 
     render() {
         return (
-            <form onSubmit={ (e) => this.handleSubmit(e)}>
-                <label htmlFor="name">Name:</label>
-                <input type="text" id="name" name="name" onChange={ (e) => this.handleChange(e)} value={this.state.name} placeholder="add gif" />
-                <label htmlFor="url">URL:</label>
-                <input type="text" id="url" name="url" onChange={ (e) => this.handleChange(e)} value={this.state.url} placeholder="URL" />
-                <label htmlFor="description">Description:</label>
-                <input type="text" id="description" name="description" onChange={ (e) => this.handleChange(e)} value={this.state.description} placeholder="description" />
-                <input type="submit" value="Add a gif"/>
-            </form>
+            <Form onSubmit={ (e) => this.handleSubmit(e)}>
+                <Form.Field>
+                    <label>NAME:</label>
+                    <input type="text" id="name" name="name" onChange={ (e) => this.handleChange(e)} value={this.state.name} placeholder="add gif" />
+                </Form.Field>
+                <Form.Field>
+                    <label>URL:</label>
+                    <input type="text" id="url" name="url" onChange={ (e) => this.handleChange(e)} value={this.state.url} placeholder="URL" />
+                </Form.Field>
+                <Form.Field>
+                    <label htmlFor="description">DESCRIPTION:</label>
+                    <input type="text" id="description" name="description" onChange={ (e) => this.handleChange(e)} value={this.state.description} placeholder="description" />
+                </Form.Field>
+                <Input focus type="submit" value="Add a gif"/>
+            </Form>
         )
     }
 }

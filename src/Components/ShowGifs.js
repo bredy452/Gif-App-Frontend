@@ -1,7 +1,7 @@
 import React from 'react'
 import Delete from './Delete'
 import Edit from './Edit'
-import { Divider, Image, Card, Icon, Grid } from 'semantic-ui-react'
+import { Divider, Image, Card, Icon, Grid, Rating } from 'semantic-ui-react'
 
 export default function ShowGifs(props) {
   console.log(props.baseUrl)
@@ -19,7 +19,7 @@ export default function ShowGifs(props) {
                 
                 <Image src={gif.url} size='medium' >
                   </Image>
-              
+
                 <Card.Content>
                   <Card.Header>{gif.name}</Card.Header>
                   <Card.Description>
@@ -28,9 +28,12 @@ export default function ShowGifs(props) {
 
                   <Delete gif={gif._id} baseUrl={props.baseUrl} getGifs={props.getGifs} />
                   <Edit gif={gif}  baseUrl={props.baseUrl} getGifs={props.getGifs}/>
+                  <Rating icon='heart' maxRating={5} clearable />
                 </Card.Content>
               </Card>
+
               </Card.Group>
+
     
              )
            })}

@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import { Header, Icon, Image } from 'semantic-ui-react'
 import NewForm from './Components/NewForm'
 import Logout from './Components/Logout'
 import Register from './Components/Register'
@@ -132,11 +133,19 @@ export default class App extends Component {
          {(() => {
           if (user) {
             return ([ <div className='container'>
-            <h1>The Functional Giph App!</h1>
+            <Logout getUser={this.getUser} baseUrl={baseUrl} deleteSession={this.deleteSession} />
+
+            <Header as='h1' icon textAlign='center' className='header'>
+              <Icon name='users' circular />
+              <Header.Content>
+              The Functional Giph App!
+              </Header.Content>
+            </Header>
+
            <NewForm baseUrl={baseUrl} addGifs={this.addGif}/>
            <ShowGifs newGif={this.state.gifs} getGifs={this.getGifs} baseUrl={baseUrl}/>
        </div>,
-            <Logout getUser={this.getUser} baseUrl={baseUrl} deleteSession={this.deleteSession} />])
+            ])
               
           }  else {
             if (this.state.visible===true) {
